@@ -14,6 +14,13 @@ func main() {
 
 	stringer := hand.toString()
 	fmt.Println(stringer)
+
+	savingDeck := hand.saveToFile("deckSave.txt")
+	if savingDeck {
+		// fmt.Println("Succes")
+	} else {
+
+	}
 }
 
 func newCard() string {

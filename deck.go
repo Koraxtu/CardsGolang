@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -37,4 +38,21 @@ func (d deck) toString() string {
 	arr := []string(d)
 	str := strings.Join(arr, ", ")
 	return str
+}
+
+func (d deck) saveToFile(s string) bool {
+	saveValue := d.toString()
+	file, err := os.Create(s)
+	if err != nil {
+		fmt.Println("Error creating file: ", err)
+		return false
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(saveValue)
+	if err != nil {
+		fmt.Println("Error writing to file: ", err)
+		return false
+	}
+	return true
 }
