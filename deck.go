@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strings"
@@ -55,4 +56,21 @@ func (d deck) saveToFile(s string) bool {
 		return false
 	}
 	return true
+}
+
+func newDeckFromFile(s string) deck {
+	file, err := os.Open(s)
+	if err != nil {
+		fmt.Println("Error opening file: ", err)
+		os.Exit(1)
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+
+	var hand string
+	for scanner.Scan() {
+		hand = scanner.Text()
+	}
+	arr := strings.Split(hand, ", ")
+	return deck(arr)
 }

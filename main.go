@@ -15,12 +15,15 @@ func main() {
 	stringer := hand.toString()
 	fmt.Println(stringer)
 
-	savingDeck := hand.saveToFile("deckSave.txt")
+	savingDeck := remainingDeck.saveToFile("deckSave.txt")
 	if savingDeck {
 		// fmt.Println("Succes")
 	} else {
 
 	}
+	newestDeck := newDeckFromFile("deckSave.txt")
+	fmt.Println("")
+	newestDeck.print()
 }
 
 func newCard() string {
