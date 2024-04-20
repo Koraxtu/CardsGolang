@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	cards := newDeckFromFile("deckSave.txt")
+	cards := newDeck()
 	// cards.print()
 
 	hand, remainingDeck := deal(cards, 5)

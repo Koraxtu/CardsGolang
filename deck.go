@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -22,6 +23,7 @@ func newDeck() deck {
 			cards = append(cards, value+" of "+suit)
 		}
 	}
+	cards.shuffle()
 	return cards
 }
 
@@ -73,4 +75,14 @@ func newDeckFromFile(s string) deck {
 	}
 	arr := strings.Split(hand, ", ")
 	return deck(arr)
+}
+
+func (d deck) shuffle() deck {
+	for i, card := range d {
+		randNum := rand.Intn(len(d))
+		store := d[randNum]
+		d[randNum] = card
+		d[i] = store
+	}
+	return d
 }
