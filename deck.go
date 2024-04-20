@@ -80,9 +80,7 @@ func newDeckFromFile(s string) deck {
 func (d deck) shuffle() deck {
 	for i, card := range d {
 		randNum := rand.Intn(len(d))
-		store := d[randNum]
-		d[randNum] = card
-		d[i] = store
+		d[randNum], d[i] = card, d[randNum]
 	}
 	return d
 }
