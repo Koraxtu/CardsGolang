@@ -17,9 +17,9 @@ func main() {
 
 	savingDeck := remainingDeck.saveToFile("deckSave.txt")
 	if savingDeck {
-		// fmt.Println("Succes")
+		fmt.Println("Succes")
 	} else {
-
+		fmt.Println("Failed to save decklist")
 	}
 	// newestDeck := newDeckFromFile("deckSave.txt")
 	// fmt.Println("")
