@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math/rand"
+	"math/rand/v2"
 	"os"
 	"strings"
 )
@@ -79,7 +79,7 @@ func newDeckFromFile(s string) deck {
 
 func (d deck) shuffle() deck {
 	for i, card := range d {
-		randNum := rand.Intn(len(d))
+		randNum := rand.IntN(len(d))
 		d[randNum], d[i] = card, d[randNum]
 	}
 	return d
